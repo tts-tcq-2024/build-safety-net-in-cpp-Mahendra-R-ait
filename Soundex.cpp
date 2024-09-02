@@ -12,7 +12,7 @@ char getSoundexCode(char c) {
         {'M', '5'}, {'N', '5'},
         {'R', '6'}
     };
-    c = ToUpper(c);
+    c = toupper(c);
     auto it = soundexCodes.find(c);
     if (it != soundexCodes.end()) {
         return it->second;
@@ -22,7 +22,7 @@ char getSoundexCode(char c) {
 }
  
 std::string InitSoundex(const std::string& name, char firstChar) {
-    std::string soundex(1, ToUpper(name[0]));
+    std::string soundex(1, toupper(name[0]));
     char secondex = getSoundexCode(name[1]);
     if (secondex != '0') {
         soundex += secondex;
@@ -32,7 +32,7 @@ std::string InitSoundex(const std::string& name, char firstChar) {
  
 char getFirstCharCode(const std::string& name) {
     if (name.empty()) return '\0';
-    return ToUpper(name[0]);
+    return toupper(name[0]);
 }
  
 void addSoundexCode(std::string& soundex, char code, char& prevCode) {
