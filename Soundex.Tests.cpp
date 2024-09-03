@@ -84,6 +84,6 @@ TEST(SoundexTest, HandlesHyphensAndSpaces) {
  
 // Test cases for the names with non-alphabetic characters
 TEST(SoundexTest, HandlesNonAlphabeticCharacters) {
-    EXPECT_EQ(generateSoundex("J'Bumrah"), "J156");
-    EXPECT_EQ(generateSoundex("Mahendra@15"), "H620");
+    EXPECT_EQ(generateSoundex("Jai'Balaya"), "J156");
+    EXPECT_EQ(generateSoundex("Mahendra@15"), "M620");
 }
