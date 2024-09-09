@@ -11,9 +11,9 @@ static const std::unordered_map<char, char> soundexCodes {
         {'R', '6'}
 };
 
-char getSoundexCode(char c) {
-    c = std::toupper(c);
-    auto lookUpResult = soundexCodes.find(c);
+char getSoundexCode(char character) {
+    c = std::toupper(character);
+    auto lookUpResult = soundexCodes.find(character);
     return (lookUpResult != soundexCodes.end()) ? lookUpResult->second : '0';
 }
 
@@ -24,26 +24,26 @@ void appendSoundexCode(std::string& soundex, char code, char& prevCode) {
     }
 }
 
-std::string processInitialCharacter(const std::string& name) {
+std::string processInitialCharacter(const std::string& Name) {
     std::string soundex;
-    soundex += std::toupper(name[0]);
+    soundex += std::toupper(Name[0]);
     return soundex;
 }
 
-void processRemainingCharacters(const std::string& name, std::string& soundex) {
-    char prevCode = getSoundexCode(name[0]);
+void processRemainingCharacters(const std::string& Name, std::string& soundex) {
+    char prevCode = getSoundexCode(Name[0]);
 
-    for (size_t i = 1; i < name.length() && soundex.length() < 4; ++i) {
-        char code = getSoundexCode(name[i]);
+    for (size_t i = 1; i < Name.length() && soundex.length() < 4; ++i) {
+        char code = getSoundexCode(Name[i]);
         appendSoundexCode(soundex, code, prevCode);
     }
 }
 
-std::string generateSoundex(const std::string& name) {
-    if (name.empty()) return "";
+std::string generateSoundex(const std::string& Name) {
+    if (Name.empty()) return "";
 
-    std::string soundex = processInitialCharacter(name);
-    processRemainingCharacters(name, soundex);
+    std::string soundex = processInitialCharacter(Name);
+    processRemainingCharacters(Name, soundex);
 
     soundex.resize(4, '0');
     return soundex;
