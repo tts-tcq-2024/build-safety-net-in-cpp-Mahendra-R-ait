@@ -12,7 +12,7 @@ static const std::unordered_map<char, char> soundexCodes {
 };
 
 char getSoundexCode(char character) {
-    c = std::toupper(character);
+    character = std::toupper(character);
     auto lookUpResult = soundexCodes.find(character);
     return (lookUpResult != soundexCodes.end()) ? lookUpResult->second : '0';
 }
